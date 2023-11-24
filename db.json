@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "name": "Gabriel Sanchez",
+      "username": "Lord Voldermort",
+      "carrera": "Ing Sistemas",
+      "id": 1,
+      "pass": "23456"
+    },
+    {
+      "name": "juan",
+      "username": "juanito",
+      "carrera": "ing",
+      "id": "6d6ee30e759a42f0a73240e088e561b2",
+      "pass": "123456"
+    }
+  ],
+  "articles": [
+    {
+      "usuario": "juanito",
+      "id": "9e73ed9e17d4400493229b86af0bd70d",
+      "user_id": "6d6ee30e759a42f0a73240e088e561b2",
+      "carrera": "ing",
+      "post": "hola soy nuevo en la comunidad saludos a todos",
+      "likes": 2,
+      "comments": [
+        {
+          "usuario": "juanito",
+          "id": "dfhsjfhhdjskf",
+          "comment": "nbnbcnxbcnx"
+        }
+      ]
+    }
+  ]
+}

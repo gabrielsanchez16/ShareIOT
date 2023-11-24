@@ -14,6 +14,11 @@ const NavBar = () => {
     navigate(url)
   }
 
+  const closeSession = ()=>{
+    localStorage.removeItem("user_login")
+    window.location.reload()
+  }
+
   return (
     <div className='Navbar'>
       <section className='navbar-content-logo'>
@@ -37,6 +42,11 @@ const NavBar = () => {
             }}>
             Crear Publicacion
           </li>
+          <li onClick={()=>{
+            closeSession()
+            }}>
+            Cerrar Sesion
+          </li>
         </ul>
         <div onClick={() => {
           setModalMenu(!modalMenu)
@@ -59,6 +69,11 @@ const NavBar = () => {
             }}>
                 Crear Publicacion
               </li>
+              <li onClick={()=>{
+            closeSession()
+            }}>
+            Cerrar Sesion
+          </li>
             </ul>
           }
         </div>

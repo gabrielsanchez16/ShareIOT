@@ -65,3 +65,8 @@ box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
     cursor: pointer;
     text-decoration: underline;
 }
+
+.correct-create-form{
+    color: var(--greenPrimary) !important;
+    font-weight: 700;
+}

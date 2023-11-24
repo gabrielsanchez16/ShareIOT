@@ -57,7 +57,7 @@
     transition: .5s ease-in-out;
 }
 
-.navbar-content-menu ul li:hover, .navbar-content-menu div:hover{
+.navbar-content-menu ul li:hover{
     transform: scale(1.04);
     cursor: pointer;
 }
@@ -70,12 +70,13 @@
     display: flex;
 }
 
-@media screen and (max-width:550px){
+@media screen and (max-width:820px){
     .display{
         display: none;
     }
     .show{
         display: flex;
+        z-index: 9;
         flex-direction: column;
         list-style: none;
         gap: 7px;

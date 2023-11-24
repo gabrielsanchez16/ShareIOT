@@ -32,6 +32,19 @@
     padding: 1rem;
 }
 
+.error-form-comment{
+    color: rgb(170, 3, 3);
+    font-size: 11px;
+}
+
+.place-red::placeholder{
+    color: rgba(197, 4, 4, 0.667);
+}
+
+.place-normal::placeholder{
+    color: rgb(163, 163, 163);
+}
+
 .content-actions-buttons{
     display: flex;
     gap: 9px;
