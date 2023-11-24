@@ -1,0 +1,129 @@
+.card-article{
+    width: 100;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+}
+
+.header-card-article{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header-card-article img {
+    width: 50px;
+    border: 3px solid var(--greenPrimary);
+    border-radius: 50%;
+}
+
+.header-card-article div {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-article{
+    margin-top: 1rem;
+    border-radius: 2px;
+    border: 1px solid rgb(230, 230, 230);
+    padding: 1rem;
+}
+
+.content-actions-buttons{
+    display: flex;
+    gap: 9px;
+    align-items: baseline;
+    margin-top: 2rem;
+}
+
+.individual-actions{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-actions-buttons img{
+    width: 30px;
+    cursor: pointer;
+}
+
+.actions-article{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+
+.content-make-comments{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 6px;
+}
+
+.content-make-comments input{
+    width: 85%;
+    height: 100%;
+    border:none;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.content-make-comments img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.all-comments{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.individual-comment{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.header-comment{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.header-comment img{
+    width: 25px;
+}
+
+.header-comment h3{
+    font-size: 13px;
+}
+
+.body-comment p{
+    font-size: 11px;
+}
+
+.actions-comment{
+    display: flex;
+    gap: 5px;
+}
+
+.actions-comment span{
+    font-size: 11px;
+    transition: .5s ease-in-out;
+    font-weight: 700;
+}
+
+.actions-comment span:hover{
+    color: var(--greenPrimary);
+    cursor: pointer;
+}

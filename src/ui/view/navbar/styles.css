@@ -1,0 +1,97 @@
+.Navbar{
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Navbar .logo {
+    width: 50px;
+}
+
+.Navbar .profile {
+    width: 60px;
+}
+
+.Navbar .arrow-down {
+    width: 20px;
+}
+
+.Navbar .search input {
+    padding: 1rem;
+    background-color: rgb(225, 225, 225);
+    border-radius: 20px;
+    border: none;
+    margin-left: 1rem;
+}
+
+.navbar-content-logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar-content-menu{
+    display: flex;
+    align-items: center;
+}
+
+.display{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.display li{
+    transition: .5s ease-in-out;
+    color: rgb(94, 94, 94);
+    font-size: 15;
+}
+
+.navbar-content-menu div {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+    transition: .5s ease-in-out;
+}
+
+.navbar-content-menu ul li:hover, .navbar-content-menu div:hover{
+    transform: scale(1.04);
+    cursor: pointer;
+}
+
+.show{
+    display: none;
+}
+
+.display{
+    display: flex;
+}
+
+@media screen and (max-width:550px){
+    .display{
+        display: none;
+    }
+    .show{
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 7px;
+        width: 150px;
+        position: absolute;
+        top: 40px;
+        left: -80px;
+        background-color: white;
+        border-radius: 8px;
+        padding: 1rem;
+        -webkit-box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+        box-shadow: 0px 2px 23px -12px rgba(0,0,0,0.75);
+    }
+    .Navbar .search input {
+        padding: 8px;
+        
+    }
+}
