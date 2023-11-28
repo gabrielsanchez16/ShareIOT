@@ -17,24 +17,14 @@ const FormLogin = ({ condition, setCondition }) => {
                 setErr(false)
             }, 3000);
         } else {
-            axios.get(`http://localhost:3000/users?pass=${password}&username=${user}`)
+            axios.get("http://localhost:8000/api/v1/usuario/login",{params:{
+                "user_name":user,
+                "password":password
+            }}
+            )
                 .then((res) => {
-                    if(res.data === null){
-                        setUserErr(true)
-                        setTimeout(() => {
-                            setUserErr(false)
-                        }, 3000);
-                    }else if(res.data.length ==  0)
-                    {
-                        setTimeout(() => {
-                            setUserErr(false)
-                        }, 3000);
-                        setUserErr(true)
-                    }else{
-                        localStorage.setItem("user_login",JSON.stringify(res.data))
+                        localStorage.setItem("user_login",JSON.stringify(res.data.user))
                         window.location.reload(true);
-                    }
-                    
                 })
                 .catch(err => {
                     console.log(err)

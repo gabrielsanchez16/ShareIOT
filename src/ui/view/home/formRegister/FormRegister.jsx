@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./styles.css"
-import axios from 'axios'
+import axios from "axios"
 
 const FormRegister = ({condition, setCondition}) => {
 
@@ -25,11 +25,10 @@ const generateUniteId = ()=>{
 const createUser = (e)=>{
     e.preventDefault()
     const data = {
-        "name":name,
-        "username":user,
+        "name_complete":name,
+        "user_name":user,
         "carrera":carrera,
-        "id":generateUniteId(),
-        "pass":password
+        "password":password
     }
     if(name === "" || carrera === "" || user === "" || password === ""){
         setErr(true)
@@ -37,16 +36,14 @@ const createUser = (e)=>{
             setErr(false)
         }, 3000);
     }else{
-        axios.post("http://localhost:3000/users",data)
+        axios.post("http://localhost:8000/api/v1/usuario/register",data)
         .then((res)=>{
-            console.log(res.data)
-            if(res.data){
                 setCorrectCreate(true)
                 setTimeout(() => {
                     setCorrectCreate(false)
                     setCondition(true)
                 }, 2000);
-            }
+            
         })
         .catch((err)=>{
             console.log(err)

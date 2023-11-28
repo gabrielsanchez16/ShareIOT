@@ -11,28 +11,15 @@ const CreateArticle = () => {
   const userLog = JSON.parse(localStorage.getItem("user_login"))
   const navigate = useNavigate()
 
-  console.log(userLog)
-  const generateUniteId = () => {
-    var d = new Date().getTime();
-    var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = (d + Math.random() * 16) % 16 | 0;
-      d = Math.floor(d / 16);
-      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-    });
-    return uuid
-  }
-
   const handleSubmitArticle = (e) => {
     e.preventDefault()
     const data =
     {
-      "usuario": userLog[0]?.username,
-      "id": generateUniteId(),
-      "user_id": userLog[0]?.id,
-      "carrera": userLog[0]?.carrera,
-      "post": articleTxt,
-      "likes": 0,
-      "comments": []
+      "user_name": userLog?.user_name,
+      "user_id": userLog?.id,
+      "carrera": userLog?.carrera,
+      "info": articleTxt,
+      "likes": 0
     }
 
     if (articleTxt === "") {
@@ -41,9 +28,8 @@ const CreateArticle = () => {
         setErr(false)
       }, 3000);
     } else {
-      axios.post("http://localhost:3000/articles", data)
+      axios.post("http://localhost:8000/api/v1/post/register", data)
         .then((res) => {
-          console.log(res.data)
           navigate("/")
         })
         .catch((err) => {

@@ -22,9 +22,10 @@ const Home = () => {
     
 
     const getArticles = () => {
-        axios.get("http://localhost:3000/articles")
+        axios.get("http://localhost:8000/api/v1/post")
             .then(res => {
-                setArticles(res.data)
+                console.log(res.data)
+                setArticles(res.data.Posts)
             })
             .catch(err => {
                 console.log(err)

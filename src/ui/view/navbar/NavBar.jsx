@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const NavBar = () => {
 
   const [modalMenu, setModalMenu] = useState(false)
+  const infoUser = JSON.parse(localStorage.getItem("user_login"))
  const navigate = useNavigate()
   const goToPage = (url)=>{
     navigate(url)
@@ -51,7 +52,11 @@ const NavBar = () => {
         <div onClick={() => {
           setModalMenu(!modalMenu)
         }}>
-          <img src={profile} className='profile' alt="" />
+          <div style={{display:"flex", flexDirection:"column", alignItems:"center", fontSize:"12px", fontWeight:"700", textTransform:"uppercase"}}>
+            <img src={profile} className='profile' alt="" />
+            <p>{infoUser?.user_name}</p>
+          </div>
+          
           <img src={arrowDown} className='arrow-down' alt="" />
           {
             modalMenu &&

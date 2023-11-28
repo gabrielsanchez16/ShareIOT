@@ -15,17 +15,9 @@ import axios from 'axios'
 
 const AllArticle = ({ item }) => {
     const [err, setErr] = useState(false)
-    const [articleInfo, setArticleInfo] = useState()
+    const [articleInfo, setArticleInfo] = useState([])
     const [commentText, setCommentText] = useState("")
-    const generateUniteId = ()=>{
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return uuid
-    }
+    const userLog = JSON.parse(localStorage.getItem("user_login"))
 
     const addComment = () => {
         if (commentText === "") {
@@ -35,25 +27,16 @@ const AllArticle = ({ item }) => {
             }, 3000);
         } else {
             const commentBody = {
-                "usuario": item?.usuario,
-                "id":generateUniteId(),
-                "comment": commentText
+                "comment": commentText,
+                "user_id":userLog?.id,
+                "user_name": userLog?.user_name,
+                "post_id":item?.id
             }
-            const newComments = item?.comments
 
-            const data = {
-                "usuario": item?.usuario,
-                "id": item?.id,
-                "user_id": item?.user_id,
-                "carrera": item?.carrera,
-                "post": item?.post,
-                "likes": item?.likes,
-                "comments": newComments
-            }
-            axios.put(`http://localhost:3000/articles/${item?.id}/`, data)
+            axios.post(`http://localhost:8000/api/v1/message/register`, commentBody)
                 .then((res) => {
                     console.log(res.data)
-                    // window.location.reload()
+                    window.location.reload()
                 })
                 .catch(err => {
                     console.log(err)
@@ -64,16 +47,12 @@ const AllArticle = ({ item }) => {
 
     const addLike = () => {
         const data = {
-            "usuario": item?.usuario,
-            "id": item?.id,
-            "user_id": item?.user_id,
-            "carrera": item?.carrera,
-            "post": item?.post,
-            "likes": item?.likes + 1,
-            "comments": item?.comments
+            "post_id": item?.id,
+            "like": item?.likes + 1,
         }
-        axios.put(`http://localhost:3000/articles/${item?.id}/`, data)
+        axios.put(`http://localhost:8000/api/v1/post`, data)
             .then((res) => {
+                console.log(res.data)
                 window.location.reload()
             })
             .catch(err => {
@@ -82,9 +61,11 @@ const AllArticle = ({ item }) => {
     }
 
     const getArticle = () => {
-        axios.get(`http://localhost:3000/articles?id=${item?.id}&user_id=${item?.user_id}`)
+        axios.get(`http://localhost:8000/api/v1/message/bypostid`,{params:{
+            post_id:item?.id
+        }})
             .then((res) => {
-                setArticleInfo(res.data)
+                setArticleInfo(res.data.comment)
             })
             .catch(err => {
                 console.log(err)
@@ -100,7 +81,7 @@ const AllArticle = ({ item }) => {
             <section className='header-card-article'>
                 <img src={person} alt="" />
                 <div>
-                    <h3>{item?.usuario}</h3>
+                    <h3>{item?.user_name}</h3>
                     <p>{item?.carrera}</p>
                 </div>
 
@@ -108,7 +89,7 @@ const AllArticle = ({ item }) => {
             <section className='content-article'>
                 <p>
                     {
-                        item?.post
+                        item?.info
                     }
                 </p>
             </section>
@@ -123,7 +104,7 @@ const AllArticle = ({ item }) => {
                     <div className='individual-actions'>
                         <img src={comments} alt="" />
                         <span>
-                            {item?.comments?.length}
+                            {articleInfo.length}
                         </span>
                     </div>
                     <div>
@@ -133,21 +114,21 @@ const AllArticle = ({ item }) => {
                 </div>
                 <section className='all-comments'>
                     {
-                        item?.comments?.length === 0 ?
+                         articleInfo.length == 0 ?
                             <p>
                                 No hay comentarios
                             </p>
                             :
 
-                            item?.comments?.map((item, key) => {
+                            articleInfo.map((item1, key) => {
                                 return (
                                     <div className='individual-comment' key={key}>
                                         <div className='header-comment'>
                                             <img src={person} alt="" />
-                                            <h3>{item?.usuario}</h3>
+                                            <h3>{item1?.user_name}</h3>
                                         </div>
                                         <div className='body-comment'>
-                                            <p>{item?.comment}</p>
+                                            <p>{item1?.comment}</p>
                                         </div>
                                         <div className='actions-comment'>
                                             <span>Me gusta</span>
