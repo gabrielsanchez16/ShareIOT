@@ -8,11 +8,13 @@ const FormLogin = ({ condition, setCondition }) => {
     const [password, setPassword] = useState("")
     const [err, setErr] = useState(false)
     const [userErr, setUserErr] = useState(false)
+    const [messageErr, setMessageErr] = useState("")
 
     const login = (e) => {
         e.preventDefault()
         if (password === "" || user === "") {
             setErr(true)
+            setMessageErr("Todos los campos son obligatorios")
             setTimeout(() => {
                 setErr(false)
             }, 3000);
@@ -25,9 +27,12 @@ const FormLogin = ({ condition, setCondition }) => {
                 .then((res) => {
                         localStorage.setItem("user_login",JSON.stringify(res.data.user))
                         window.location.reload(true);
+                        console.log(res.data)
                 })
                 .catch(err => {
-                    console.log(err)
+                    setUserErr(true)
+                    setMessageErr(err.response.data.message)
+                    console.log(err.response.data.message)
                     setTimeout(() => {
                         setUserErr(false)
                     }, 3000);
@@ -50,13 +55,13 @@ const FormLogin = ({ condition, setCondition }) => {
             {
                 err &&
                 <p className='error-form'>
-                    Todos los campos son obligatorios
+                    {messageErr}
                 </p>
             }
             {
                 userErr &&
                 <p className='error-form'>
-                    No existe el usuario
+                    {messageErr}
                 </p>
             }
 

@@ -35,7 +35,9 @@ const NavBar = () => {
             }}>
             Inicio
           </li>
-          <li>
+          <li onClick={()=>{
+            goToPage("/Myprofile")
+            }}>
             Mi perfil
           </li>
           <li onClick={()=>{
@@ -66,7 +68,9 @@ const NavBar = () => {
             }}>
                 Inicio
               </li>
-              <li>
+              <li onClick={()=>{
+            goToPage("/Myprofile")
+            }}>
                 Mi perfil
               </li>
               <li onClick={()=>{

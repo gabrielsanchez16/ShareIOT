@@ -1,0 +1,46 @@
+/* Estilos para el contenedor del perfil */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para la sección de encabezado del perfil */
+  .profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la sección de publicaciones */
+  .profile-posts {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .post {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  
+  /* Media queries para hacerlo responsive */
+  @media (max-width: 600px) {
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+    }
+    
+    /* Otros ajustes de estilos para pantallas más pequeñas */
+  }
+  

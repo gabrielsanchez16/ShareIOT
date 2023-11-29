@@ -24,7 +24,6 @@ const Home = () => {
     const getArticles = () => {
         axios.get("http://localhost:8000/api/v1/post")
             .then(res => {
-                console.log(res.data)
                 setArticles(res.data.Posts)
             })
             .catch(err => {
